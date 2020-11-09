@@ -1,4 +1,4 @@
-package generated;
+package JAXB;
 
 import java.io.File;
 import java.util.List;
@@ -7,15 +7,13 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 
-import generated.Libros.Libro;
-
 public class ejercicio7 {
 
 	public static void escribirMisLibros(File fichero) throws JAXBException {
 		
 		Libros misLibros = new Libros();
 		
-		Libro libroRubius = new Libro();
+		JAXB.Libros.Libro libroRubius = new JAXB.Libros.Libro();
 		libroRubius.setAutor("El Rubius");
 		libroRubius.setEditorial("Nose");
 		libroRubius.setTitulo("El libro Troll del Rubius");

@@ -1,4 +1,4 @@
-package generated;
+package JAXB;
 
 import java.io.File;
 import java.util.List;

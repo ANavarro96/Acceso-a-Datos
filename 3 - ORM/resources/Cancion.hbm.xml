@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 8 nov. 2020 23:46:45 by Hibernate Tools 5.4.18.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="musica" dynamic-insert="false" dynamic-update="false" mutable="true" name="resources.Cancion" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="cancion">
+        <id name="id" type="int">
+            <column name="id"/>
+            <generator class="assigned"/>
+        </id>
+        <many-to-one class="resources.Album" embed-xml="true" fetch="select" insert="true" name="album" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="album_id" not-null="true"/>
+        </many-to-one>
+        <property generated="never" lazy="false" name="name" optimistic-lock="true" type="string" unique="false">
+            <column length="50" name="name" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="duration" optimistic-lock="true" type="double" unique="false">
+            <column name="duration" not-null="true" precision="22" scale="0"/>
+        </property>
+    </class>
+</hibernate-mapping>

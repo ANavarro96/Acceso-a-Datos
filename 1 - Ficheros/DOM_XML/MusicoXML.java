@@ -24,8 +24,6 @@ import org.w3c.dom.NodeList;
 import org.w3c.dom.Text;
 import org.xml.sax.SAXException;
 
-import com.sun.tools.doclint.HtmlTag.Attr;
-
 public class MusicoXML {
 
 

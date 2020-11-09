@@ -1,4 +1,4 @@
-package generated;
+package RAF;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -18,7 +18,7 @@ public class Ejercicio_4_P1 {
 		String respuesta = null;
 		StringBuffer buffer = null;
 		
-		try {
+		try { 
 			// sE CREA la variable RandomAccessFile
 			RandomAccessFile fichero = new RandomAccessFile("departamento.dat","rw");
 			System.out.println("¿Quieres introducir un nuevo departamento?");
