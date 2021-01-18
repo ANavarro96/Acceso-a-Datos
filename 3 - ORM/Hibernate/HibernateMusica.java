@@ -200,7 +200,9 @@ public class HibernateMusica {
 		 * 
 		 */
 		
-		imprimirAlbum(session, ObtenerAlbumsTWY(session));
+		persistirDiscografica(session, new Discografica("Hope Records"));
+		
+		/*imprimirAlbum(session, ObtenerAlbumsTWY(session));
 		
 		Query query = session.createQuery("from Artista");
 		List<Artista> listaArtista = query.list();
@@ -209,7 +211,7 @@ public class HibernateMusica {
 			System.out.println(a.getName());
 			System.out.println(a.getId());
 			
-		}
+		}*/
 		
 		/* Hacer commit de los cambios */
 		tx.commit();
