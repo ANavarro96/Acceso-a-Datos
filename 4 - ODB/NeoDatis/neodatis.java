@@ -9,6 +9,7 @@ import org.neodatis.odb.OID;
 import org.neodatis.odb.ObjectValues;
 import org.neodatis.odb.Objects;
 import org.neodatis.odb.Values;
+import org.neodatis.odb.core.oid.OIDFactory;
 import org.neodatis.odb.core.query.IQuery;
 import org.neodatis.odb.core.query.IValuesQuery;
 import org.neodatis.odb.core.query.criteria.And;
@@ -46,6 +47,20 @@ public class neodatis {
 		 * Nos devuelve el OID del objeto, al giual que Hibernate nos devuelve el ID.
 		 */
 		return odb.store(deporte);
+		
+	}
+	
+	
+	public static void borrarDeporte(ODB odb, int id) {
+		/*
+		 * El método store(objeto) nos permite almacenar un objeto en la 
+		 * BBDD, como el método save de Hibernate.
+		 * Nos devuelve el OID del objeto, al giual que Hibernate nos devuelve el ID.
+		 */
+		OID oid = new OIDFactory().buildObjectOID(id);
+		
+		odb.deleteObjectWithId(oid);
+		
 		
 	}
 	

@@ -46,7 +46,7 @@ public static void obtenerInfoCuantitativa(ODB odb) {
 		IValuesQuery valuesQuery = new ValuesCriteriaQuery(Video.class).
 				count("titulo").sum("visitas","suma").avg("likes","media_likes").max("dislikes", "max_dislikes");
 		
-		// La query devuelve un obvjeto de tipo Values, los cuales se obtienen mediante la op getFirst()
+		// En este caso , la query devuelve un objeto de tipo Values, los cuales se obtienen mediante la op getFirst()
 		Values values = odb.getValues(valuesQuery);
 		ObjectValues v = values.getFirst();
 		// Una vez tenemos los valores, obtenemos la info llamando a la función getByAlias.
@@ -55,6 +55,28 @@ public static void obtenerInfoCuantitativa(ODB odb) {
 				+ " el mayor número de dislikes es:" + v.getByAlias("max_dislikes"));
 		
 	}
+
+public static void obtenerInfoAgrupacion(ODB odb) {
+	
+	// Se utiliza la clase valuesQuery para establecer las funciones de agregación a usar
+	// Primero se pone la clase asociada, y después todas las operaciones
+	IValuesQuery valuesQuery = new ValuesCriteriaQuery(Video.class).
+			field("likes").sum("visitas","suma").avg("dislikes", "max_dislikes").groupBy("likes");
+	
+	
+	Values values = odb.getValues(valuesQuery);
+	ObjectValues v;
+	// Aquí, como hemos agrupado, hay más de un registro a devolver.
+	// Iteramos sobre el objeto Vaues (como si fuetra un cursor) utilizando como condición
+	// el método hasNext()
+	while(values.hasNext()) {
+	// Una vez tenemos los valores, obtenemos la info llamando a la función getByAlias.
+		v = values.nextValues();
+		System.out.println("Los videos que tienen " + v.getByAlias("likes") + " likes tienen  la suma total de "
+			+ "visitas es :" + v.getByAlias("suma") + " el mayor número de dislikes es:" + v.getByAlias("max_dislikes"));
+	
+	}
+}
 
 
 	
@@ -67,7 +89,10 @@ public static void obtenerInfoCuantitativa(ODB odb) {
 		 */
 		ODB odb = ODBFactory.open("resources/youtube.neodatis");
 
-		obtenerInfoCuantitativa(odb);
+		//obtenerInfoCuantitativa(odb);
+		
+		
+		obtenerInfoAgrupacion(odb);
 		/* Como siempre, hay que cerrar la conexión*/
 		odb.close();
 	}
