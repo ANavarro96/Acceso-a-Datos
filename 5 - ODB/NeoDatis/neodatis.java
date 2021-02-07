@@ -53,9 +53,8 @@ public class neodatis {
 	
 	public static void borrarDeporte(ODB odb, int id) {
 		/*
-		 * El método store(objeto) nos permite almacenar un objeto en la 
-		 * BBDD, como el método save de Hibernate.
-		 * Nos devuelve el OID del objeto, al giual que Hibernate nos devuelve el ID.
+		 * Con el método OIDFactory().buildObjectOID podemos instanciar el objeto OID
+		 * Una vez tenemos el objeto OID, podemos borrar, modificar y sacar... los objetos en la BBDD
 		 */
 		OID oid = new OIDFactory().buildObjectOID(id);
 		
