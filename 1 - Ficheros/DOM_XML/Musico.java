@@ -8,6 +8,12 @@ public class Musico {
 	private int formacion;
 	private String genero;
 	
+	public Musico(String nombre, int formacion, String genero) {
+		super();
+		this.nombre = nombre;
+		this.formacion = formacion;
+		this.genero = genero;
+	}
 	
 	public String getNombre() {
 		return nombre;
@@ -28,11 +34,9 @@ public class Musico {
 		this.genero = genero;
 	}
 	
-	public Musico(String nombre, int formacion, String genero) {
-		super();
-		this.nombre = nombre;
-		this.formacion = formacion;
-		this.genero = genero;
+	@Override
+	public String toString() {
+		return "El grupo se llama " + nombre + " formado en " + formacion + " y su estilo musical es " + genero;
 	}
 	
 }

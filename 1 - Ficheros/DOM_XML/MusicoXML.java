@@ -68,7 +68,7 @@ public class MusicoXML {
 					Element nodoMusico = null, nodoDatos = null;
 				
 					Text texto = null;
-					org.w3c.dom.Attr atributo = null;
+					
 				
 					
 					// Ahora, por cada Musico de nuestro arrayList que nos envían por parámetro

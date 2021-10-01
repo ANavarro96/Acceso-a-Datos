@@ -16,6 +16,19 @@
     <artifactId>mongo-java-driver</artifactId>
     <version>3.12.7</version>
 </dependency>
+<!-- https://mvnrepository.com/artifact/org.neodatis.odb/neodatis-odb -->
+<dependency>
+    <groupId>org.neodatis.odb</groupId>
+    <artifactId>neodatis-odb</artifactId>
+    <version>1.9.21.679</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+<dependency>
+    <groupId>org.hibernate</groupId>
+    <artifactId>hibernate-core</artifactId>
+    <version>5.4.28.Final</version>
+</dependency>
+
 
   </dependencies>
   
@@ -45,6 +58,7 @@
           <release>11</release>
         </configuration>
       </plugin>
+      
     </plugins>
   </build>
 </project>
