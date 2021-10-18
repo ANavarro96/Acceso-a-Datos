@@ -65,8 +65,7 @@ public class MusicoXML {
 					 * Node: Corresponde a cualquier componente del documento, puede ser textual, un elemento, un atributo...
 					 * Text: Se recfiere al texto que hay dentro de cada elemento
 					 */
-					Element nodoMusico = null, nodoDatos = null;
-				
+					Element nodoMusico = null, nodoNombre = null, nodoAnyo = null, nodoGenero = null;
 					Text texto = null;
 					
 				
@@ -82,26 +81,26 @@ public class MusicoXML {
 						//nodoMusico.setAttribute("Discografica", "Hopeless Records");
 						
 						// Creamos un elemento nombre y lo añadimos al elemento Musico
-						nodoDatos = documento.createElement("nombre");
-						nodoMusico.appendChild(nodoDatos);
+						nodoNombre = documento.createElement("nombre");
+						nodoMusico.appendChild(nodoNombre);
 						
 						texto = documento.createTextNode(Musico.getNombre());
-						nodoDatos.appendChild(texto);
+						nodoNombre.appendChild(texto);
 						
 						// Creamos un elemento año_formacion y lo añadimos al elemento Musico
-						nodoDatos = documento.createElement("año_formacion");
-						nodoMusico.appendChild(nodoDatos);
+						nodoAnyo = documento.createElement("año_formacion");
+						nodoMusico.appendChild(nodoAnyo);
 						
 						texto = documento.createTextNode(String.valueOf(Musico.getFormacion()));
-						nodoDatos.appendChild(texto);
+						nodoAnyo.appendChild(texto);
 						
 						
 						// Creamos un elemento genero y lo añadimos al elemento Musico
-						nodoDatos = documento.createElement("genero");
-						nodoMusico.appendChild(nodoDatos);
+						nodoGenero = documento.createElement("genero");
+						nodoMusico.appendChild(nodoGenero);
 						
 						texto = documento.createTextNode(Musico.getGenero());
-						nodoDatos.appendChild(texto);
+						nodoGenero.appendChild(texto);
 					}
 					
 					// Una vez tenemos nuestro árbol DOM creado, hay que tranformarlo a nuestro fichero XML
