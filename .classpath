@@ -12,6 +12,7 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="src" path="4 - Servicios Web"/>
 	<classpathentry kind="src" path="5 - ODB"/>
 	<classpathentry kind="src" path="6 - MongoDB"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-11">
