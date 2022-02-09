@@ -8,6 +8,8 @@ public class Curso {
 	ArrayList<Alumno> lista_alumnos;
 	
 	
+	public Curso() {}
+	
 	public Curso(String nombre, int numero_clases, ArrayList<Alumno> lista_alumnos) {
 		super();
 		this.nombre = nombre;

@@ -5,6 +5,8 @@ public class Alumno {
 	int edad;
 	double media;
 	
+	public Alumno() {}
+	
 	public Alumno(String nombre, int edad, double media) {
 		super();
 		this.nombre = nombre;

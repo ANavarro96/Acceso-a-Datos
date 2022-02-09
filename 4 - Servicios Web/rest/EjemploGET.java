@@ -86,7 +86,7 @@ public class EjemploGET {
 		        try (CloseableHttpResponse response1 = httpclient.execute(getRequest)) {
 		            System.out.println(response1.getCode() + " " + response1.getReasonPhrase());
 		            HttpEntity entity1 = response1.getEntity();
-		            // do something useful with the response body
+		            // do something useful with the   response body
 		            resultado = EntityUtils.toString(entity1);
 		            // and ensure it is fully consumed
 		            EntityUtils.consume(entity1);

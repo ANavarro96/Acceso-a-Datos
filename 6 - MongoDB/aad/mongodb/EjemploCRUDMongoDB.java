@@ -17,6 +17,7 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Indexes;
+import com.mongodb.client.model.Updates;
 
 /**
  * Hello world!
@@ -73,9 +74,15 @@ public class EjemploCRUDMongoDB
 	
 	public static void modificarUnGatito(MongoCollection<Document> gatitos){
 		
+		/* Otra forma directa usando el operador $set 
 		Document nuevoNombre = new Document("nombre","Garfield").append("edad", 5).append("vacunado", "False");
 		
-		gatitos.findOneAndUpdate(Filters.eq("nombre","Rayitas"),new Document("$set",nuevoNombre));
+		gatitos.findOneAndUpdate(Filters.eq("nombre","Rayitas"),new Document("$set",nuevoNombre)); */
+		
+		// Usando la clave de Java indicada
+		
+		gatitos.findOneAndUpdate(Filters.eq("nombre","Rayitas"),Updates.combine(Updates.set("nombre", "Garfield"),
+				Updates.push("numLasanyasComidas", 10)));
 		
 	}
 	
@@ -127,7 +134,7 @@ public static void busquedaTextual(MongoCollection<Document> gatitos){
     	// Nos conectamos (o creamos) a una colección (o tabla)  llamada gatitos
     	MongoCollection<Document> gatitos = database.getCollection("gatitos");
     	
-    	//guardarGatitos(gatitos);
+    	guardarGatitos(gatitos);
     	//modificarUnGatito(gatitos);
     	//borrarGatitos(gatitos);
     	//obtenerGatitoGuapito(gatitos);

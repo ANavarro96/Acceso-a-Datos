@@ -24,6 +24,7 @@ import com.mongodb.client.model.Aggregates;
 import com.mongodb.client.model.BsonField;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Projections;
+import com.mongodb.client.model.Updates;
 
 public class ObjetoAMongo {
 	
@@ -51,11 +52,11 @@ public class ObjetoAMongo {
 	}
 	
 	public static void ModificarAlumno(MongoCollection<Curso> cursos) {
-		Document nuevoAlumno = new Document("lista_alumnos.$.nombre","Yoshi")
-				.append("lista_alumnos.$.edad", 10)
-				.append("lista_alumnos.$.media", 6.7);
+		Document nuevoAlumno = new Document("nombre","Yoshi")
+				.append("edad", 10).append("media", 6.7);
 		
-		cursos.updateMany(Filters.eq("lista_alumnos.nombre","Waluigi"),new Document("$set",nuevoAlumno));		    
+		cursos.updateMany(Filters.eq("lista_alumnos.nombre","Waluigi"),Updates.push("lista_alumnos",nuevoAlumno));		
+		cursos.updateOne(Filters.eq("lista_alumnos.nombre","Waluigi"), Updates.pull("lista_alumnos", new Alumno("Waluigi", 68, 4.99)));
 		
 	}
 
@@ -77,7 +78,7 @@ public class ObjetoAMongo {
         
         ModificarAlumno(cursos);
         
-        
+        for(Curso c : cursos.find()) System.out.println(c.toString());        
         //cursos.deleteMany(new Document());
         mongoClient.close();
         

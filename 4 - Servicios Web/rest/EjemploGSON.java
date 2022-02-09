@@ -36,7 +36,7 @@ public class EjemploGSON {
 		     // and ensure it is fully consumed
 		     EntityUtils.consume(entidadRespuesta);
 		 } catch (ParseException e) {
-				// TODO Auto-generated catch block
+				// TODO A  uto-generated catch block
 				e.printStackTrace();
 			} catch (IOException e) {
 			// TODO Auto-generated catch block
