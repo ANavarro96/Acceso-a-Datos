@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class Ciudad implements Serializable {
 	
-	private String nombre; // Obligamos a que la longitud sea 15
+	private String nombre;
 	private Integer numHabitantes;
 	private boolean esCapital;
 	

@@ -20,6 +20,9 @@ public class EjemploBD {
 			System.out.println("Intentamos conectar");
 			conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/Musicos?serverTimezone=UTC","root","123456");
 			System.out.println("Nos hemos conectado");
+
+			conexion.setAutoCommit(false);
+
 			// 4 Crear Stametent
 			stmt = conexion.createStatement();
 			
@@ -43,7 +46,7 @@ public class EjemploBD {
 			*/
 			
 			/*
-			 * Añadir datos
+			 * Aï¿½adir datos
 			String SQL = "INSERT INTO grupo(Nombre,Genero) VALUES(\"TWY\",\"Pop-punk\");";
 			
 			stmt.executeUpdate(SQL);
@@ -56,7 +59,7 @@ public class EjemploBD {
 			while(resultado.next()) {
 				System.out.println(resultado.getString("Nombre"));
 				System.out.println(resultado.getString("Genero"));
-		
+				conexion.rollback();
 			}
 			
 			
@@ -66,6 +69,7 @@ public class EjemploBD {
 			e.printStackTrace();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
 		

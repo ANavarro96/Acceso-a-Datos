@@ -18,7 +18,7 @@ import resources.Discografica;
 public class HibernateMusica {
 
 	/*
-	 * Funcion que recibe como parámetro un objeto Session y un nuevo objeto de tipo Discografica
+	 * Funcion que recibe como parï¿½metro un objeto Session y un nuevo objeto de tipo Discografica
 	 * Crea el nuevo objeto persistente.
 	 */
 	public static void persistirDiscografica(Session sesion,Discografica d) {
@@ -26,7 +26,7 @@ public class HibernateMusica {
 	}
 	
 	/*
-	 * Funcion que recibe como parámetro un objeto Session y el Id de la discografia a obtener
+	 * Funcion que recibe como parï¿½metro un objeto Session y el Id de la discografia a obtener
 	 * Devuelve un objeto de tipo Discografica
 	 */
 	public static Discografica obtenerDiscografia(Session sesion,int id) {
@@ -35,7 +35,7 @@ public class HibernateMusica {
 	
 	
 	/*
-	 * Funcion que recibe como parámetro un objeto Session y el Id de la discografia a modificar
+	 * Funcion que recibe como parï¿½metro un objeto Session y el Id de la discografia a modificar
 	 * Recupera el objeto persistente, modifica su nombre y actualiza los cambios
 	 */
 	public static void ModificarNombreDiscografica(Session sesion,int id) {
@@ -47,7 +47,7 @@ public class HibernateMusica {
 	}
 	
 	/*
-	 * Funcion que recibe como parámetro un objeto Session y el Id de la discografia a borrar
+	 * Funcion que recibe como parï¿½metro un objeto Session y el Id de la discografia a borrar
 	 * Recupera el objeto persistente, lo borra y actualiza los cambios
 	 */
 	public static void BorrarDiscografica(Session sesion,int id) {
@@ -81,10 +81,10 @@ public class HibernateMusica {
 		for(Artista a: ListaArtistas) {
 			System.out.print(a.getId() + " " +  a.getName() + '\n');
 			/*
-			 * Como la relación entre  Discografica - Artista  es 1 - N podemos sacar la información de cada Discográfica!!
+			 * Como la relaciï¿½n entre  Discografica - modelo.Artista  es 1 - N podemos sacar la informaciï¿½n de cada Discogrï¿½fica!!
 			 * Se interpreta como un propio OBJETO!
 			 */
-			System.out.println("Información de la discográfica asociada a " + a.getName());
+			System.out.println("Informaciï¿½n de la discogrï¿½fica asociada a " + a.getName());
 			System.out.print(a.getDiscografica().getName() + ' ' + a.getDiscografica().getId());
 			System.out.println();
 		}
@@ -112,7 +112,7 @@ public class HibernateMusica {
 		for(Album a: listaAlbums) {
 			System.out.print(a.getId() + " " +  a.getName() + '\n');
 			/*
-			 * Como la relación entre  Album - Cancion  es 1 - N podemos sacar la información de cada Cancion!!
+			 * Como la relaciï¿½n entre  Album - Cancion  es 1 - N podemos sacar la informaciï¿½n de cada Cancion!!
 			 * Se interpreta como un Set de Cancion.
 			 * Un objeto de tipo Set es parecido a un List o ArrayList, y se itera con la ayuda
 			 * de un objeto Iterator.
@@ -135,10 +135,10 @@ public class HibernateMusica {
 				
 			}
 			/*
-			 *  Con un bucle for mejorado sería
+			 *  Con un bucle for mejorado serï¿½a
 			 *  for(Cancion c : listaCanciones){
 			 *   hacer lo que sea
-			 *   Tenemos cada Canciones de la lista en c, ya lo he usado en algún otro ejemplo
+			 *   Tenemos cada Canciones de la lista en c, ya lo he usado en algï¿½n otro ejemplo
 			 *  }
 			 * 
 			 */
@@ -164,17 +164,17 @@ public class HibernateMusica {
 		// TODO Auto-generated method stub
 		
 		/*
-		 * La llamada a Configuration().configure() carga el fichero de configuración hibernate.cfg.xml e
+		 * La llamada a Configuration().configure() carga el fichero de configuraciï¿½n hibernate.cfg.xml e
 			inicializa el entorno de Hibernate. 
 			Hay que ponerlo en la carpeta raiz, dentro de una subcarpeta llamada resources, si no por defecto
-			Hibernate espera que esté dentro de la carpeta 'src'
+			Hibernate espera que estï¿½ dentro de la carpeta 'src'
 		 * 
 		 */
 		
 		Configuration cfg = new Configuration().configure("resources/hibernate.cfg.xml");
 		
 		/*
-		 * Una vez inicializada la configuración, se crea el ejemplar de
+		 * Una vez inicializada la configuraciï¿½n, se crea el ejemplar de
 			SessionFactory, que normalmente solo se crea una vez y se utiliza para crear todas las
 			sesiones relacionadas con un contexto dado.
 		 */
@@ -182,7 +182,7 @@ public class HibernateMusica {
 		SessionFactory sessionFactory = cfg.buildSessionFactory();
 		
 		/*
-		 * Un objeto Session de Hibernate representa una única unidad de trabajo, una conexión para un almacén de
+		 * Un objeto Session de Hibernate representa una ï¿½nica unidad de trabajo, una conexiï¿½n para un almacï¿½n de
 		 *	datos dado , abierto por un SessionFactory
 		 */
 		Session session = sessionFactory.openSession();
@@ -190,13 +190,13 @@ public class HibernateMusica {
 		
 		
 		/*
-		 * Creamos una transacción, con el método beginTransacition comenzamos una en nuestra sesión
+		 * Creamos una transacciï¿½n, con el mï¿½todo beginTransacition comenzamos una en nuestra sesiï¿½n
 		 */
 		Transaction tx = session.beginTransaction();
 		
 		
 		/*
-		 * Cualquier tipo de lógica
+		 * Cualquier tipo de lï¿½gica
 		 * 
 		 */
 		
@@ -204,10 +204,10 @@ public class HibernateMusica {
 		
 		/*imprimirAlbum(session, ObtenerAlbumsTWY(session));
 		
-		Query query = session.createQuery("from Artista");
-		List<Artista> listaArtista = query.list();
+		Query query = session.createQuery("from modelo.Artista");
+		List<modelo.Artista> listaArtista = query.list();
 		
-		for (Artista a: listaArtista) {
+		for (modelo.Artista a: listaArtista) {
 			System.out.println(a.getName());
 			System.out.println(a.getId());
 			
@@ -215,7 +215,7 @@ public class HibernateMusica {
 		
 		/* Hacer commit de los cambios */
 		tx.commit();
-		/* Cerrar sesión */
+		/* Cerrar sesiï¿½n */
 		session.close();
 		
 		

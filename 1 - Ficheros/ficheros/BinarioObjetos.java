@@ -26,8 +26,9 @@ public class BinarioObjetos {
 		ObjectInputStream oin;
 		try {
 			fout = new FileOutputStream("ciudades.dat");
-			oout = new ObjectOutputStream(fout);
 			
+			oout = new ObjectOutputStream(fout);
+
 			oout.writeObject(zgz); oout.writeObject(utebo);
 			
 			oout.close();
