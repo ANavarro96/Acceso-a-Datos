@@ -2,7 +2,11 @@
 <module version="4">
   <component name="AdditionalModuleElements">
     <content url="file://$MODULE_DIR$" dumb="true">
+      <sourceFolder url="file://$MODULE_DIR$/3 - ORM" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/2 - JDBC" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/4 - Servicios Web" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/5 - ODB" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/6 - MongoDB" isTestSource="false" />
     </content>
   </component>
 </module>

@@ -29,8 +29,7 @@ public class EjemploCRUDMongoDB
 		ArrayList<Document> listaGatitos = new ArrayList<>();
     	
     	// Creamos los Document utilizando append y los añadimos a una lista de documentos
-		
-		
+
     	listaGatitos.add(new Document("_id",1).append("nombre", "Rayitas").append("raza", "siames"));
     	listaGatitos.add(new Document("_id",2).append("nombre", "Peludin").append("raza", "noruego"));
     	listaGatitos.add(new Document("_id",3).append("nombre", "Gordito").append("raza", "negro"));
