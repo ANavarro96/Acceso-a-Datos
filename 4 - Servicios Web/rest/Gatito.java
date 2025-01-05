@@ -100,7 +100,7 @@ public class Gatito{
 		this.used = used;
 	}
 
-	public class Status{
+	public static class Status{
 		 public boolean verified;
 		 public int sentCount;
 	}

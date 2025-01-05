@@ -4,17 +4,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import com.mongodb.client.*;
 import org.bson.Document;
 import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
 
-import com.mongodb.BasicDBObject;
-import com.mongodb.DB;
-import com.mongodb.Mongo;
-import com.mongodb.MongoClient;
-import com.mongodb.client.FindIterable;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Indexes;
 import com.mongodb.client.model.Updates;
@@ -124,7 +118,7 @@ public static void busquedaTextual(MongoCollection<Document> gatitos){
     {
     	
     	// Abrimos colección con el servidor de Mongo
-    	MongoClient mongoClient = new MongoClient();
+    	MongoClient mongoClient = MongoClients.create("mongodb://localhost:27017");
     	
     	
     	// Nos conectamos (o creamos) una BBDD llamada Felinos

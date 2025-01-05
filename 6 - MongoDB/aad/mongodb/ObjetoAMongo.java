@@ -11,8 +11,6 @@ import static org.bson.codecs.configuration.CodecRegistries.fromRegistries;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import com.mongodb.Mongo;
 import com.mongodb.MongoClientSettings;
 import com.mongodb.client.AggregateIterable;
 import com.mongodb.client.MongoClient;

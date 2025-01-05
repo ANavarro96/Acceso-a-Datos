@@ -4,14 +4,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import com.mongodb.client.*;
 import org.bson.Document;
 import org.bson.conversions.Bson;
 
-import com.mongodb.MongoClient;
-import com.mongodb.client.AggregateIterable;
-import com.mongodb.client.FindIterable;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Accumulators;
 import com.mongodb.client.model.Aggregates;
 import com.mongodb.client.model.BsonField;
@@ -41,7 +37,7 @@ public class Agregaciones {
 		AggregateIterable<Document> maxr = zips.aggregate(
                 Arrays.asList(
                         Aggregates.group("$state", 
-                        		Accumulators.max("media_pob", "$pop"))));
+                        		Accumulators.avg("media_pob", "$pop"))));
 		
 		for(Document d:maxr) System.out.println(d.toJson());
 		
@@ -68,7 +64,7 @@ public class Agregaciones {
 		// TODO Auto-generated method stub
 		
 		// Abrimos colección con el servidor de Mongo
-    	MongoClient mongoClient = new MongoClient();
+		MongoClient mongoClient = MongoClients.create("mongodb://localhost:27017");
     	
     	
     	// Nos conectamos (o creamos) una BBDD llamada Felinos
