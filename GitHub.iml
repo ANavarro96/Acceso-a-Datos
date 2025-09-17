@@ -6,6 +6,7 @@
       <sourceFolder url="file://$MODULE_DIR$/2 - JDBC" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/4 - Servicios Web" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/5 - ODB" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/0 - Introduccion" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/6 - MongoDB" isTestSource="false" />
     </content>
   </component>

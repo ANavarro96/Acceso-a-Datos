@@ -25,6 +25,7 @@ public class BinarioObjetos {
 		FileInputStream fin;
 		ObjectInputStream oin;
 		try {
+			// Algoritmo de escritura
 			fout = new FileOutputStream("ciudades.dat");
 			
 			oout = new ObjectOutputStream(fout);
@@ -32,22 +33,28 @@ public class BinarioObjetos {
 			oout.writeObject(zgz); oout.writeObject(utebo);
 			
 			oout.close();
-			
+
+			// Algoritmo de lectura
 			fin = new FileInputStream("ciudades.dat");
 			oin = new ObjectInputStream(fin);
 			
 			System.out.println(oin.readObject().toString()); // Leemos el primer objeto; el cursor apunta al segundo
+			// Ciudad cLeida = (Ciudad) oin.readObject(); <- Si queremos guardarlo en una variable es así
 			System.out.println(oin.readObject().toString()); // Leemos el primer objeto; el cursor apunta al segundo
-			
+
+			oin.close();
 			
 			
 		} catch (FileNotFoundException e) {
+			// Error si no encuentra el fichero
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
+			// Error de E/S
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
+			// Error si no encuentra la clase del objeto que estamos leyendo
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
