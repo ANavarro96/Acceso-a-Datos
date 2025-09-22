@@ -1,4 +1,4 @@
-package ficheros;
+package ficheros.binario;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

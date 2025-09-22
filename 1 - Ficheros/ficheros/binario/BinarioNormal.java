@@ -1,4 +1,4 @@
-package ficheros;
+package ficheros.binario;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -6,8 +6,6 @@ import java.io.EOFException;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 
 public class BinarioNormal {
 	
@@ -37,7 +35,7 @@ public class BinarioNormal {
 			fin = new FileInputStream("superheroes.dat");
 			din = new DataInputStream(fin);
 			
-			//¿Cómo sabremos cuando hemos llegado al final del fichero??
+			//ï¿½Cï¿½mo sabremos cuando hemos llegado al final del fichero??
 			String nombre = din.readUTF();
 			while(nombre != null) {
 				
