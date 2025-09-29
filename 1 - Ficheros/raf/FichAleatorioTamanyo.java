@@ -57,6 +57,8 @@ public class FichAleatorioTamanyo {
             crearFichero(fichero);
             leerFichero(fichero);
 
+            escribirFinalFichero(fichero);
+
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
@@ -86,5 +88,10 @@ public class FichAleatorioTamanyo {
             System.out.println(fichero.readLong());
         }
     }
+
+    public static void escribirFinalFichero(RandomAccessFile fichero) throws IOException {
+       /* TODO: Escribir una buena pelicula, como Scary Movie */
+
+     }
 
 }
