@@ -59,7 +59,6 @@ public class EjemploBD {
 			while(resultado.next()) {
 				System.out.println(resultado.getString("Nombre"));
 				System.out.println(resultado.getString("Genero"));
-				conexion.rollback();
 			}
 			
 			

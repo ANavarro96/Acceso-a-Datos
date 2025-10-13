@@ -11,6 +11,7 @@ public class SQLite {
         try {
             // Step 1: Establish the connection to SQLite database
             connection = DriverManager.getConnection(URL);
+            connection = ConexionDBSQLite.getConnection();
             if (connection != null) {
                 System.out.println("Connection to SQLite has been established.");
 
