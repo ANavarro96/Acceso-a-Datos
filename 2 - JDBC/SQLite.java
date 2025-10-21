@@ -41,7 +41,9 @@ public class SQLite {
 
     // Create a new table in the database
     private static void createNewTable(Connection connection) {
-        String createTableSQL = "CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, age INTEGER)";
+        String createTableSQL = "CREATE TABLE IF NOT EXISTS users " +
+                "(id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                " name TEXT NOT NULL, age INTEGER)";
 
         try (Statement stmt = connection.createStatement()) {
             // Execute the table creation
