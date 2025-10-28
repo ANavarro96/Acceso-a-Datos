@@ -15,7 +15,8 @@ public class EjemploResultsetmetadata {
 			Class.forName("com.mysql.jdbc.Driver"); // Cargar el driver
 			Connection conexion = DriverManager.getConnection(
 					"jdbc:mysql://localhost/ejemplo", "ejemplo", "ejemplo");
-             
+
+
 			Statement sentencia = conexion.createStatement();
 			ResultSet rs = sentencia
 					.executeQuery("SELECT * FROM departamentos");

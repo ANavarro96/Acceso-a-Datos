@@ -4,8 +4,7 @@ public class EjemploMetaDatos {
 
         public static void main(String[] args) {
             // Establecer la conexión a la base de datos
-            try (Connection conexion = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/nba", "root", "root")) {
+            try (Connection conexion = ConexionDBSQLite.getConnection()) {
 
                 // Obtener el objeto DatabaseMetaData a partir de la conexión
                 DatabaseMetaData metaDatos = conexion.getMetaData();
@@ -17,7 +16,7 @@ public class EjemploMetaDatos {
                 System.out.println("Versión de la Base de Datos: " + metaDatos.getDatabaseProductVersion());*/
 
                 // Obtener las tablas de la base de datos
-                ResultSet tablas = metaDatos.getTables("nba", null, null,null);
+                ResultSet tablas = metaDatos.getTables(null, null, "users",null);
                 System.out.println("Estas son las tablas de la base de datos:");
                 while (tablas.next()) {
                     String nombreTabla = tablas.getString("TABLE_NAME");
@@ -33,20 +32,20 @@ public class EjemploMetaDatos {
 
                     // Obtener las claves primarias de la tabla
                     ResultSet clavesPrimarias = metaDatos.getPrimaryKeys(null, null, nombreTabla);
-                    //System.out.println("Claves primarias de la tabla '" + nombreTabla + "':");
+                    System.out.println("Claves primarias de la tabla '" + nombreTabla + "':");
                     while (clavesPrimarias.next()) {
-                     //   System.out.println("Columna: " + clavesPrimarias.getString("COLUMN_NAME") +
-                      //          ", Nombre de la clave: " + clavesPrimarias.getString("PK_NAME"));
+                        System.out.println("Columna: " + clavesPrimarias.getString("COLUMN_NAME") +
+                               ", Nombre de la clave: " + clavesPrimarias.getString("PK_NAME"));
                     }
 
                     // Obtener las claves foráneas de la tabla
                     ResultSet clavesForaneas = metaDatos.getImportedKeys(null, null, nombreTabla);
                     //System.out.println("Claves foráneas de la tabla '" + nombreTabla + "':");
                     while (clavesForaneas.next()) {
-                       /* System.out.println("Columna: " + clavesForaneas.getString("FKCOLUMN_NAME") +
+                        System.out.println("Columna: " + clavesForaneas.getString("FKCOLUMN_NAME") +
                                 ", Referencia a tabla: " + clavesForaneas.getString("PKTABLE_NAME") +
                                 ", Columna referenciada: " + clavesForaneas.getString("PKCOLUMN_NAME") +
-                                ", Nombre de la clave: " + clavesForaneas.getString("FK_NAME"));*/
+                                ", Nombre de la clave: " + clavesForaneas.getString("FK_NAME"));
 
                     }
 

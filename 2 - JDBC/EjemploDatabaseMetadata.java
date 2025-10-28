@@ -3,10 +3,8 @@ public class EjemploDatabaseMetadata {
 	public static void main(String[] args) {
 	  try
 	  {
-		Class.forName("com.mysql.jdbc.Driver"); //Cargar el driver
-		//Establecemos la conexion con la BD
-        Connection conexion = DriverManager.getConnection  
-            ("jdbc:mysql://localhost/ejemplo","ejemplo", "ejemplo");   
+
+		  Connection conexion = ConexionDBSQLite.getConnection();
   
 		DatabaseMetaData dbmd = conexion.getMetaData();//Creamos 
                                //objeto DatabaseMetaData
@@ -16,6 +14,7 @@ public class EjemploDatabaseMetadata {
   		 String driver  = dbmd.getDriverName();
   		 String url     = dbmd.getURL(); 
   		 String usuario = dbmd.getUserName() ;
+
 		 		 
   		 System.out.println("INFORMACI�N SOBRE LA BASE DE DATOS:");
   		 System.out.println("===================================");
@@ -36,9 +35,7 @@ public class EjemploDatabaseMetadata {
   					   tipo, catalogo, esquema, tabla);
 			   }   				
   		 conexion.close(); //Cerrar conexion   		  	   
-	  } 
-   catch (ClassNotFoundException cn) {cn.printStackTrace();} 
-          catch (SQLException e) {e.printStackTrace();}		
+	  } catch (SQLException e) {e.printStackTrace();}
 	}//fin de main
 }//fin de la clase
 
