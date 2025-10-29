@@ -1,11 +1,11 @@
 package DAO;
 
-public class Gatito {
+public class Gato {
 
     private String nombre;
     private Integer edad;
 
-    public Gatito(String nombre, Integer edad) {
+    public Gato(String nombre, Integer edad) {
         this.nombre = nombre;
         this.edad = edad;
     }
