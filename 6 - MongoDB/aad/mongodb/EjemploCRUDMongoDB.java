@@ -29,7 +29,8 @@ public class EjemploCRUDMongoDB
     	listaGatitos.add(new Document("_id",3).append("nombre", "Gordito").append("raza", "negro"));
     	
     	// Voy a hacer este gatito un poco más completo (con un objeto dentro y una lista)
-    	Document direccion = new Document("calle","moraleja").append("piso", 9).append("piscina", "True").append("ciudad","Madrid");
+    	Document direccion = new Document("calle","moraleja").append("piso", 9).append("piscina", "True")
+				.append("ciudad","Madrid");
     	
     	Document duenyo = new Document("nombre","paco").append("edad", 29).append("profesion", "Médico");
     	Document duenya = new Document("nombre","paca").append("edad", 25).append("profesion", "Juez");
