@@ -5,10 +5,7 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
-import com.mongodb.client.model.Accumulators;
-import com.mongodb.client.model.Aggregates;
-import com.mongodb.client.model.Projections;
-import com.mongodb.client.model.Sorts;
+import com.mongodb.client.model.*;
 import org.bson.Document;
 import org.bson.conversions.Bson;
 
@@ -20,26 +17,36 @@ public class EjemplosAggregationPipeline {
     // sacar nota máxima de los juegos según su plataforma
     public static void notaMaximaPorPlataforma(MongoCollection<Document> listaJuegos){
 
+        Bson agrupar = Aggregates.group("$platform",
+                Accumulators.max("nota_Maxima","$meta_score"));
 
+        Bson ordenar = Aggregates.sort(Sorts.ascending("nota_Maxima"));
 
-        listaJuegos.aggregate(List.of()).forEach(doc -> System.out.println(doc.toJson()));
+        listaJuegos.aggregate(List.of(agrupar, ordenar)).forEach(doc -> System.out.println(doc.toJson()));
 
     }
 
     // ¿cuantos juegos hay por consola? De más a menos
     public static void juegosPorConsola(MongoCollection<Document> listaJuegos){
 
+        Bson agrupar = Aggregates.group("$platform",
+                Accumulators.sum("Num_Juegos", 1));
 
-        listaJuegos.aggregate(List.of( )).forEach(doc -> System.out.println(doc.toJson()));;
+        Bson ordenar = Aggregates.sort(Sorts.descending("Num_Juegos"));
+
+        listaJuegos.aggregate(List.of(agrupar, ordenar )).forEach(doc -> System.out.println(doc.toJson()));;
 
     }
 
     // sacar nota media de los juegos de switch
 
     public void notaMediaSwitch(MongoCollection<Document> listaJuegos){
+        Bson notamedia = Aggregates.match(Filters.eq("platform","Switch" ));
+        Bson agrupar = Aggregates.group("$platform",
+                Accumulators.avg("nota_meda", "$meta_score"));
 
 
-        //listaJuegos.aggregate(List.of()).forEach(doc -> System.out.println(doc.toJson()));
+        listaJuegos.aggregate(List.of(notamedia, agrupar)).forEach(doc -> System.out.println(doc.toJson()));
 
     }
 
@@ -52,18 +59,26 @@ public class EjemplosAggregationPipeline {
     }
     // sacar el juego (o juegos) de la GBA que tenga(n) la menor nota en meta_score
     // Este ejemplo en dos partes.
-    public void juegoGBAMejorNota(MongoCollection<Document> listaJuegos){
+    public static void juegoGBAMejorNota(MongoCollection<Document> listaJuegos){
 
-        //listaJuegos.aggregate()
-        listaJuegos.aggregate(List.of()).forEach(doc -> System.out.println(doc.toJson()));
+        Bson notamax = Aggregates.match(Filters.eq("platform","GBA" ));
+        Bson agrupar = Aggregates.group("$platform",
+                Accumulators.max("max", "$meta_score"));
 
+        int notaMax = listaJuegos.aggregate(List.of(notamax, agrupar)).first().getInteger("max");
+
+        listaJuegos.find(Filters.and(Filters.eq("meta_score", notaMax)
+                , Filters.eq("platform", "GBA"))).forEach(System.out::println);
     }
 
     // ¿Top 5 géneros más frecuentes en Switch?
-    public void top5GenerosSwitch(MongoCollection<Document> listaJuegos){
+    public static void top5GenerosSwitch(MongoCollection<Document> listaJuegos){
 
-        //listaJuegos.aggregate()
-        listaJuegos.aggregate(List.of()).forEach(doc -> System.out.println(doc.toJson()));
+        Bson listaD = Aggregates.unwind("$genres");
+        Bson grupo = Aggregates.group("$genres",Accumulators.sum("Top-generos",1));
+        Bson sort = Aggregates.sort(Sorts.descending("Top-generos"));
+        Bson limit = Aggregates.limit(5);
+        listaJuegos.aggregate(List.of(listaD,grupo,sort,limit)).forEach(doc -> System.out.println(doc.toJson()));
 
     }
 
@@ -78,7 +93,7 @@ public class EjemplosAggregationPipeline {
 
     public static void main(String[] args) {
         String connectionString =
-                "mongodb+srv://anavarroprofe96_db_user:@accesodatos.tv2ftyn.mongodb.net/?appName=AccesoDatos";
+                "mongodb+srv://anavarroprofe96_db_user:anavarroprofe96_db_user@accesodatos.tv2ftyn.mongodb.net/?appName=AccesoDatos";
         ServerApi serverApi = ServerApi.builder()
                 .version(ServerApiVersion.V1)
                 .build();
@@ -99,17 +114,17 @@ public class EjemplosAggregationPipeline {
                 // Llamadar a metodos
                 
                 System.out.println("----- NOTA MAXIMA POR PLATAFORMA -----");
-                //notaMaximaPorPlataforma(listaJuegos);
+                notaMaximaPorPlataforma(listaJuegos);
                 System.out.println("----- JUEGOS POR CONSOLA -----");
-                //juegosPorConsola(listaJuegos);
+                juegosPorConsola(listaJuegos);
                 System.out.println("----- NOTA MEDIA SWITCH -----");
                 //notaMediaSwitch(listaJuegos);
                 System.out.println("----- TOP 5 PEORES JUEGOS SWITCH/WII -----");
                 //top5PeoresSwitchWii(listaJuegos);
                 System.out.println("----- JUEGO GBA MEJOR NOTA -----");
-                //juegoGBAMejorNota(listaJuegos);
+                juegoGBAMejorNota(listaJuegos);
                 System.out.println("----- TOP 5 GENEROS SWITCH -----");
-                //top5GenerosSwitch(listaJuegos);
+                top5GenerosSwitch(listaJuegos);
                 System.out.println("----- DESARROLLADORES POR NOTA MEDIA -----");
                 //desarrolladoresPorNotaMedia(listaJuegos);
 
