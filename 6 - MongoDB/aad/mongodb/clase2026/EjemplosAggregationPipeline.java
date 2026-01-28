@@ -93,7 +93,7 @@ public class EjemplosAggregationPipeline {
 
     public static void main(String[] args) {
         String connectionString =
-                "mongodb+srv://anavarroprofe96_db_user:anavarroprofe96_db_user@accesodatos.tv2ftyn.mongodb.net/?appName=AccesoDatos";
+                "mongodb+srv://anavarroprofe96_db_user:vuestro_pass@accesodatos.tv2ftyn.mongodb.net/?appName=AccesoDatos";
         ServerApi serverApi = ServerApi.builder()
                 .version(ServerApiVersion.V1)
                 .build();
