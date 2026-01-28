@@ -45,13 +45,7 @@ public class EjemplosAggregationPipeline {
 
     // Sacar top 5 peores juegos de Switch o de Wii, ordenados por meta_score ascendente
     public void top5PeoresSwitchWii(MongoCollection<Document> listaJuegos){
-        /*
-        [
-          { $match: { platform: { $in: ["Switch", "Wii"] } } },
-          { $sort: { meta_score: 1 } },
-          { $limit: 5 }
-        ]
-         */
+
        // listaJuegos.aggregate()
         //listaJuegos.aggregate(List.of()).forEach(doc -> System.out.println(doc.toJson()));
 
@@ -59,13 +53,7 @@ public class EjemplosAggregationPipeline {
     // sacar el juego (o juegos) de la GBA que tenga(n) la menor nota en meta_score
     // Este ejemplo en dos partes.
     public void juegoGBAMejorNota(MongoCollection<Document> listaJuegos){
-        /*
-        [
-          { $match: { platform: "GBA" } },
-          { $sort: { meta_score: -1 } },
-          { $limit: 1 }
-        ]
-         */
+
         //listaJuegos.aggregate()
         listaJuegos.aggregate(List.of()).forEach(doc -> System.out.println(doc.toJson()));
 
@@ -73,15 +61,7 @@ public class EjemplosAggregationPipeline {
 
     // ¿Top 5 géneros más frecuentes en Switch?
     public void top5GenerosSwitch(MongoCollection<Document> listaJuegos){
-        /*
-        [
-          { $match: { platform: "Switch" } },
-          { $unwind: "$genres" },
-          { $group: { _id: "$genres", count: { $sum: 1 } } },
-          { $sort: { count: -1 } },
-          { $limit: 5 }
-        ]
-         */
+
         //listaJuegos.aggregate()
         listaJuegos.aggregate(List.of()).forEach(doc -> System.out.println(doc.toJson()));
 
@@ -89,13 +69,7 @@ public class EjemplosAggregationPipeline {
 
     // Devuelve los desarrolladores y su nota media, ordenados de más a menos.
     public void desarrolladoresPorNotaMedia(MongoCollection<Document> listaJuegos){
-        /*
-        [
-          { $unwind: "$developers" },
-          { $group: { _id: "$developers", avgMetaScore: { $avg: "$meta_score" } } },
-          { $sort: { avgMetaScore: -1 } }
-        ]
-         */
+
         //listaJuegos.aggregate()
         listaJuegos.aggregate(List.of()).forEach(doc -> System.out.println(doc.toJson()));
 
@@ -123,12 +97,20 @@ public class EjemplosAggregationPipeline {
 
 
                 // Llamadar a metodos
-                // notaMaximaPorPlataforma(listaJuegos);
-                // juegosPorConsola(listaJuegos);
+                
+                System.out.println("----- NOTA MAXIMA POR PLATAFORMA -----");
+                //notaMaximaPorPlataforma(listaJuegos);
+                System.out.println("----- JUEGOS POR CONSOLA -----");
+                //juegosPorConsola(listaJuegos);
+                System.out.println("----- NOTA MEDIA SWITCH -----");
                 //notaMediaSwitch(listaJuegos);
+                System.out.println("----- TOP 5 PEORES JUEGOS SWITCH/WII -----");
                 //top5PeoresSwitchWii(listaJuegos);
+                System.out.println("----- JUEGO GBA MEJOR NOTA -----");
                 //juegoGBAMejorNota(listaJuegos);
+                System.out.println("----- TOP 5 GENEROS SWITCH -----");
                 //top5GenerosSwitch(listaJuegos);
+                System.out.println("----- DESARROLLADORES POR NOTA MEDIA -----");
                 //desarrolladoresPorNotaMedia(listaJuegos);
 
 
